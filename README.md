@@ -4,7 +4,7 @@ Submitted by: **Shirina Shaji Daniel**
 
 This web app: **shows a community board of popular New York City food trucks with their cuisine type and a link to view each menu.**
 
-Time spent: **3** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
