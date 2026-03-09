@@ -1,0 +1,187 @@
+/* Reset + base font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Full-screen plant background */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background-color: #faebd7;
+  background-image: url("https://img.freepik.com/free-vector/potted-plant-doodle-vector-background_53876-126321.jpg?w=2000");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Root container */
+#root {
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main app container: center everything on screen */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically */
+  padding: 24px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Header (title + description + count) */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  margin-bottom: 4px;
+}
+
+.card-count {
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+/* Main area: card + button */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Flashcard outer box (size/look) */
+.flashcard {
+  position: relative;
+  width: 700px;
+  max-width: 90vw;
+  min-height: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 25px #008158ac;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  display: block;
+}
+
+/* Inner element that rotates and fills the card */
+.flip-card-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Apply rotation when flipped */
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  padding: 32px;
+}
+
+/* Question side – base */
+.flip-card-front {
+  background: #008158ac; /* default green */
+}
+
+/* Start card (dark green) */
+.flip-card-front.start-card {
+  background: #006837;
+}
+
+/* Category colors */
+.flip-card-front.watering {
+  background: #c7f2ff;   /* light blue */
+}
+
+.flip-card-front.light {
+  background: #fff7b3;   /* light yellow */
+}
+
+.flip-card-front.general {
+  background: #e2fff6;   /* pale green */
+}
+
+/* Answer side */
+.flip-card-back {
+  background: #e2fff660;
+  transform: rotateY(180deg);
+}
+
+.flashcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(1, 151, 96, 0.806);
+}
+
+.flashcard-text {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #222324;
+}
+
+/* Button */
+.next-button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #111827;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 6px 15px rgba(17, 24, 39, 0.4);
+}
+
+.next-button:hover {
+  background: #020617;
+  transform: translateY(-1px);
+}
+
+.next-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.4);
+}
