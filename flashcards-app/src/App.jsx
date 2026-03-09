@@ -12,8 +12,7 @@ const CARDS = [
     id: 2,
     category: "Light",
     question: "What does 'bright indirect light' mean for houseplants?",
-    answer:
-      "Lots of light but not direct sun on the leaves, like near a bright window with a sheer curtain."
+    answer: "Lots of light but not direct sun on the leaves, like near a bright window with a sheer curtain."
   },
   {
     id: 3,
@@ -24,8 +23,7 @@ const CARDS = [
   {
     id: 4,
     category: "Watering",
-    question:
-      "What does it usually mean if a plant’s leaves are yellowing from overwatering?",
+    question: "What does it usually mean if a plant’s leaves are yellowing from overwatering?",
     answer: "The roots are staying too wet and may start to rot."
   },
   {
@@ -38,8 +36,7 @@ const CARDS = [
     id: 6,
     category: "Watering",
     question: "What simple tool can you use to check if the soil is dry?",
-    answer:
-      "Your finger—stick it 1–2 inches into the soil to feel for moisture."
+    answer: "Your finger—stick it 1–2 inches into the soil to feel for moisture."
   },
   {
     id: 7,
@@ -57,8 +54,7 @@ const CARDS = [
     id: 9,
     category: "General",
     question: "What is a good sign that a plant might need repotting?",
-    answer:
-      "Roots are growing out of the drainage holes or circling the pot tightly."
+    answer: "Roots are growing out of the drainage holes or circling the pot tightly."
   },
   {
     id: 10,
@@ -77,7 +73,7 @@ function App() {
 
   const handleCardClick = () => {
     if (!started) return
-    setIsFlipped(!isFlipped)
+    setIsFlipped((prev) => !prev)
   }
 
   const handleStartClick = () => {
@@ -85,15 +81,24 @@ function App() {
     setIsFlipped(false)
   }
 
-  // ONE-BY-ONE NEXT CARD (in order)
+  // RANDOM NEXT CARD (no immediate repeat)
   const handleNextClick = () => {
     if (!started) {
       handleStartClick()
       return
     }
-    const newIndex = (currentIndex + 1) % CARDS.length
-    setCurrentIndex(newIndex)
+
     setIsFlipped(false)
+
+    setCurrentIndex((prevIndex) => {
+      if (CARDS.length <= 1) return prevIndex
+
+      let nextIndex = prevIndex
+      while (nextIndex === prevIndex) {
+        nextIndex = Math.floor(Math.random() * CARDS.length)
+      }
+      return nextIndex
+    })
   }
 
   return (
